@@ -1,4 +1,4 @@
-import { SketchApp } from "./components/SketchApp";
+import { SketchApp } from "./components/SketchApp/SketchApp";
 import "./App.css";
 
 const App = () => {
