@@ -4,9 +4,9 @@ import "./SketchApp.css";
 
 export const SketchApp = () => {
   return (
-    <Canvas>
+    <div style={{ width: "100vw", height: "100vh" }}>
       <DrawingCanvas />
       {/* Add 3D scene content */}
-    </Canvas>
+    </div>
   );
 };
