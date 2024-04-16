@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { PaintingBrush } from "../PaintingBrush/PaintingBrush";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 export const Scene = () => {
   return (
@@ -10,11 +10,8 @@ export const Scene = () => {
       style={{ position: "fixed", top: 0, left: 0, zIndex: 1 }}
     >
       <OrbitControls />
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+      <Environment preset="city" />
       <PaintingBrush />
-      {/* <axesHelper />
-      <gridHelper /> */}
     </Canvas>
   );
 };

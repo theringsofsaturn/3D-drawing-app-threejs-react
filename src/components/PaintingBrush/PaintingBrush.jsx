@@ -9,8 +9,8 @@ export const PaintingBrush = (props) => {
     <group {...props} dispose={null}>
       <group
         position={[0, 0, 0]}
-        rotation={[-Math.PI, 0, 0]}
-        scale={[10, 10, 10]}
+        rotation={[-Math.PI, 5, 0]}
+        scale={[0.02, 0.02, 0.02]}
       >
         <mesh
           castShadow
