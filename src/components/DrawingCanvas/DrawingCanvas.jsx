@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
-const DrawingCanvas = () => {
-  const [color, setColor] = useState("#000000");
+export const DrawingCanvas = () => {
+  const [color, setColor] = useState("#FF0000");
   const [strokeWidth, setStrokeWidth] = useState(5);
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef();
@@ -27,6 +27,7 @@ const DrawingCanvas = () => {
     contextRef.current.beginPath();
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
+    console.log(offsetX, offsetY);
   };
 
   const draw = ({ nativeEvent }) => {
@@ -50,7 +51,7 @@ const DrawingCanvas = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          zIndex: 1,
+          zIndex: 100,
         }}
         onMouseDown={startDrawing}
         onMouseMove={draw}
@@ -62,7 +63,7 @@ const DrawingCanvas = () => {
           position: "fixed",
           top: 10,
           left: 10,
-          zIndex: 2,
+          zIndex: 101,
           display: "flex",
           flexDirection: "column",
           gap: "10px",
@@ -85,5 +86,3 @@ const DrawingCanvas = () => {
     </>
   );
 };
-
-export default DrawingCanvas;

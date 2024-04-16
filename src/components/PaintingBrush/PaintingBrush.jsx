@@ -2,11 +2,16 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import modelPath from "/painting_brush.glb";
 
-export function PaintingBrush(props) {
+export const PaintingBrush = (props) => {
   const { nodes, materials } = useGLTF(modelPath);
+  console.log("painting brush", nodes);
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 0.067, 0.067]} rotation={[-Math.PI, 0, 0]}>
+      <group
+        position={[0, 0, 0]}
+        rotation={[-Math.PI, 0, 0]}
+        scale={[10, 10, 10]}
+      >
         <mesh
           castShadow
           receiveShadow
@@ -22,6 +27,6 @@ export function PaintingBrush(props) {
       </group>
     </group>
   );
-}
+};
 
 useGLTF.preload(modelPath);
