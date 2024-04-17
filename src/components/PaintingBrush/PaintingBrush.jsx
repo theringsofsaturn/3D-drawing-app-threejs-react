@@ -1,15 +1,67 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
 import modelPath from "/painting_brush.glb";
+import { useFrame, useThree } from "@react-three/fiber";
 
-export const PaintingBrush = (props) => {
+export const PaintingBrush = ({
+  mousePosition,
+  isDrawing,
+  canvasRef,
+  ...props
+}) => {
   const { nodes, materials } = useGLTF(modelPath);
-  console.log("painting brush", nodes);
+  const { camera } = useThree();
+  const pencilRef = useRef();
+
+  useFrame(() => {
+    const pencil = pencilRef.current;
+
+    if (pencil) {
+      const xPos = mousePosition.x;
+      const yPos = mousePosition.y;
+
+      const mouse = new THREE.Vector2(
+        (xPos / window.innerWidth) * 2 - 1,
+        -(yPos / window.innerHeight) * 2 + 1
+      );
+
+      const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+      vector.unproject(camera);
+
+      const dir = vector.sub(camera.position).normalize();
+      const distance = -camera.position.z / dir.z;
+      const mousePos = camera.position
+        .clone()
+        .add(dir.multiplyScalar(distance));
+
+      pencil.position.copy(mousePos);
+
+      const angle = Math.atan2(
+        mousePosition.y - window.innerHeight / 2,
+        mousePosition.x - window.innerWidth / 2
+      );
+
+      pencil.rotation.y = angle;
+    }
+  });
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={pencilRef}>
       <group
-        position={[0, 0, 0]}
-        rotation={[-Math.PI, 5, 0]}
+        position={[
+          (mousePosition.x / window.innerWidth) * 2 - 1,
+          -(mousePosition.y / window.innerHeight) * 2 + 1,
+          0,
+        ]}
+        rotation={[
+          -Math.PI,
+          0,
+          Math.atan2(
+            mousePosition.y - window.innerHeight / 2,
+            mousePosition.x - window.innerWidth / 2
+          ),
+        ]}
         scale={[0.02, 0.02, 0.02]}
       >
         <mesh

@@ -1,10 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 
-export const DrawingCanvas = () => {
+export const DrawingCanvas = ({
+  setMousePosition,
+  isDrawing,
+  setIsDrawing,
+  canvasRef,
+}) => {
   const [color, setColor] = useState("#FF0000");
   const [strokeWidth, setStrokeWidth] = useState(5);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const canvasRef = useRef();
   const contextRef = useRef();
 
   useEffect(() => {
@@ -20,20 +23,22 @@ export const DrawingCanvas = () => {
     context.strokeStyle = color;
     context.lineWidth = strokeWidth;
     contextRef.current = context;
-  }, [color, strokeWidth]);
+  }, [color, strokeWidth, canvasRef]);
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.beginPath();
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
-    console.log(offsetX, offsetY);
+    setMousePosition({ x: offsetX, y: offsetY });
   };
 
   const draw = ({ nativeEvent }) => {
+    const { offsetX, offsetY } = nativeEvent;
+    setMousePosition({ x: offsetX, y: offsetY });
+
     if (!isDrawing) return;
 
-    const { offsetX, offsetY } = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke();
   };
