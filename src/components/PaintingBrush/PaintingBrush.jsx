@@ -36,33 +36,15 @@ export const PaintingBrush = ({
         .add(dir.multiplyScalar(distance));
 
       pencil.position.copy(mousePos);
-
-      const angle = Math.atan2(
-        mousePosition.y - window.innerHeight / 2,
-        mousePosition.x - window.innerWidth / 2
-      );
-
-      pencil.rotation.y = angle;
     }
   });
 
   return (
     <group {...props} dispose={null} ref={pencilRef}>
       <group
-        position={[
-          (mousePosition.x / window.innerWidth) * 2 - 1,
-          -(mousePosition.y / window.innerHeight) * 2 + 1,
-          0,
-        ]}
-        rotation={[
-          -Math.PI,
-          0,
-          Math.atan2(
-            mousePosition.y - window.innerHeight / 2,
-            mousePosition.x - window.innerWidth / 2
-          ),
-        ]}
-        scale={[0.02, 0.02, 0.02]}
+        position={[0, 0, 0]}
+        rotation={[-Math.PI / 2, 0, Math.PI / 2]}
+        scale={[0.01, 0.01, 0.01]}
       >
         <mesh
           castShadow
