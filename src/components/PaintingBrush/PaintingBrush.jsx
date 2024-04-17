@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import modelPath from "/painting_brush.glb";
+import modelPath from "/painting_brush_pivot.glb";
 import { useFrame, useThree } from "@react-three/fiber";
 
 export const PaintingBrush = ({
