@@ -1,0 +1,28 @@
+.brush-size-slider {
+  display: flex;
+  justify-content: center;
+}
+
+.brush-size-slider input {
+  width: 100%;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.6);
+  outline: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.brush-size-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.brush-size-slider input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}

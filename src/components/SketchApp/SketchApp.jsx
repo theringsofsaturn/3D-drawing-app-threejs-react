@@ -10,6 +10,7 @@ export const SketchApp = () => {
 
   return (
     <>
+      <div className="canvas-container"></div>
       <DrawingCanvas
         setMousePosition={setMousePosition}
         isDrawing={isDrawing}
