@@ -1,6 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { PaintingBrush } from "../PaintingBrush/PaintingBrush";
+import { VanGoghRoom } from "../VanGoghRoom";
 import { Environment } from "@react-three/drei";
 
 export const Scene = ({ mousePosition, isDrawing, canvasRef }) => {
@@ -15,6 +16,7 @@ export const Scene = ({ mousePosition, isDrawing, canvasRef }) => {
         isDrawing={isDrawing}
         canvasRef={canvasRef}
       />
+      <VanGoghRoom />
     </Canvas>
   );
 };
