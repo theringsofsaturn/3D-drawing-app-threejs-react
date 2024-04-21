@@ -56,7 +56,7 @@ export const DrawingCanvas = ({
           position: "fixed",
           top: 0,
           left: 0,
-          zIndex: 100,
+          zIndex: 2,
         }}
         onMouseDown={startDrawing}
         onMouseMove={draw}
@@ -66,27 +66,63 @@ export const DrawingCanvas = ({
       <div
         style={{
           position: "fixed",
-          top: 10,
-          left: 10,
-          zIndex: 101,
+          top: 20,
+          right: 20,
+          zIndex: 2,
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
+          alignItems: "center",
+          padding: "20px",
+          background: "rgba(255, 255, 255, 0.8)",
+          borderRadius: "10px",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
         <input
           type="color"
           value={color}
           onChange={(e) => setColor(e.target.value)}
-          style={{ width: "50px", height: "50px" }}
+          style={{
+            width: "60px",
+            height: "60px",
+            border: "none",
+            borderRadius: "50%",
+            appearance: "none",
+            WebkitAppearance: "none",
+            padding: 0,
+            margin: 0,
+            cursor: "pointer",
+          }}
         />
-        <input
-          type="range"
-          min="1"
-          max="20"
-          value={strokeWidth}
-          onChange={(e) => setStrokeWidth(parseInt(e.target.value))}
-        />
+        <div
+          style={{
+            width: "200px",
+            marginTop: "20px",
+          }}
+        >
+          <input
+            type="range"
+            min="1"
+            max="20"
+            value={strokeWidth}
+            onChange={(e) => setStrokeWidth(parseInt(e.target.value))}
+            style={{
+              width: "100%",
+              cursor: "pointer",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              fontSize: "12px",
+              color: "#666",
+            }}
+          >
+            <span>1</span>
+            <span>20</span>
+          </div>
+        </div>
       </div>
     </>
   );

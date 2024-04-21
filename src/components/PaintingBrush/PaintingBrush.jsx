@@ -44,7 +44,7 @@ export const PaintingBrush = ({
       <group
         position={[0, 0, 0]}
         rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-        scale={[0.01, 0.01, 0.01]}
+        scale={[0.015, 0.015, 0.015]}
       >
         <mesh
           castShadow

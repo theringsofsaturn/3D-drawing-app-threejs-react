@@ -8,6 +8,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  /* background: linear-gradient(135deg, #ff6b6b, #4ecdc4); */
   font-family: "Roboto", sans-serif;
 }

@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import modelPath from "/van_gogh.glb";
+import modelPath from "/van_gogh_room.glb";
 
 export function VanGoghRoom(props) {
   const { nodes, materials } = useGLTF(modelPath);
   return (
     <group {...props} dispose={null}>
-      <group position={[-1.3, -1.9, 0]} rotation={[-Math.PI / 2.2, 0, 0.3]} scale={2.005}>
+      <group
+        position={[-1.3, -1.9, 0]}
+        rotation={[-Math.PI / 2.2, 0, 0.3]}
+        scale={2.005}
+      >
         <mesh
           castShadow
           receiveShadow

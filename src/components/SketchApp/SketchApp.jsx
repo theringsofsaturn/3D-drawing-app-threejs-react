@@ -9,8 +9,7 @@ export const SketchApp = () => {
   const canvasRef = useRef();
 
   return (
-    <>
-      <div className="canvas-container"></div>
+    <div className="sketch-app">
       <DrawingCanvas
         setMousePosition={setMousePosition}
         isDrawing={isDrawing}
@@ -22,6 +21,6 @@ export const SketchApp = () => {
         isDrawing={isDrawing}
         canvasRef={canvasRef}
       />
-    </>
+    </div>
   );
 };

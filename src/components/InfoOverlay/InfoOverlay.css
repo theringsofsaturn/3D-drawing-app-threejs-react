@@ -1,0 +1,26 @@
+.info-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: fit-content;
+  max-width: 80%;
+  z-index: 10;
+}
+
+.info-overlay h1 {
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.info-overlay p {
+  margin-bottom: 20px;
+}
+
+.info-overlay button {
+  margin: 0 10px;
+}
