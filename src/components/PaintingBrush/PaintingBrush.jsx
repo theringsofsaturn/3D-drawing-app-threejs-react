@@ -4,12 +4,7 @@ import * as THREE from "three";
 import modelPath from "/painting_brush_pivot.glb";
 import { useFrame, useThree } from "@react-three/fiber";
 
-export const PaintingBrush = ({
-  mousePosition,
-  isDrawing,
-  canvasRef,
-  ...props
-}) => {
+export const PaintingBrush = ({ mousePosition, isDrawing, ...props }) => {
   const { nodes, materials } = useGLTF(modelPath);
   const { camera } = useThree();
   const pencilRef = useRef();

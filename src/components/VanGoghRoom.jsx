@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import modelPath from "/van_gogh_room.glb";
 
-export function VanGoghRoom(props) {
+export function VanGoghRoom({ exploreRoom, ...props }) {
   const { nodes, materials } = useGLTF(modelPath);
   return (
     <group {...props} dispose={null}>

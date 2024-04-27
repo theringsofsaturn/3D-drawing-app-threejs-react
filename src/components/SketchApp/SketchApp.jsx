@@ -1,26 +1,11 @@
-import { DrawingCanvas } from "../DrawingCanvas/DrawingCanvas";
-import { Scene } from "../Scene/Scene";
-import "./SketchApp.css";
-import { useRef, useState } from "react";
+import { PaintingBrush } from "../PaintingBrush/PaintingBrush";
+import { VanGoghAvatar } from "../VanGoghAvatar";
 
-export const SketchApp = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isDrawing, setIsDrawing] = useState(false);
-  const canvasRef = useRef();
-
+export const SketchApp = ({ mousePosition, setShowDrawingCanvas }) => {
   return (
-    <div className="sketch-app">
-      <DrawingCanvas
-        setMousePosition={setMousePosition}
-        isDrawing={isDrawing}
-        setIsDrawing={setIsDrawing}
-        canvasRef={canvasRef}
-      />
-      <Scene
-        mousePosition={mousePosition}
-        isDrawing={isDrawing}
-        canvasRef={canvasRef}
-      />
-    </div>
+    <>
+      <PaintingBrush mousePosition={mousePosition} />
+      <VanGoghAvatar />
+    </>
   );
 };
