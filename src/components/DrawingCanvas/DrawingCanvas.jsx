@@ -21,11 +21,16 @@ export const DrawingCanvas = ({
       const context = canvas.getContext("2d");
       context.scale(2, 2);
       context.lineCap = "round";
-      context.strokeStyle = color;
-      context.lineWidth = strokeWidth;
       contextRef.current = context;
     }
-  }, [color, strokeWidth, canvasRef]);
+  }, [canvasRef]); // Removed color and strokeWidth from dependencies
+
+  useEffect(() => {
+    if (contextRef.current) {
+      contextRef.current.strokeStyle = color;
+      contextRef.current.lineWidth = strokeWidth;
+    }
+  }, [color, strokeWidth]); // Separate useEffect for color and strokeWidth
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -46,6 +51,13 @@ export const DrawingCanvas = ({
   const stopDrawing = () => {
     contextRef.current.closePath();
     setIsDrawing(false);
+  };
+
+  // added canvas-reset function and button
+  const resetCanvas = () => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
   };
 
   return (
@@ -79,6 +91,7 @@ export const DrawingCanvas = ({
             <span>20</span>
           </div>
         </div>
+        <button className="reset-button" onClick={resetCanvas}>Reset Canvas</button>
       </div>
     </>
   );

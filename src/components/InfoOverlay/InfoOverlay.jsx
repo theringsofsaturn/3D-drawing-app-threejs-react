@@ -1,7 +1,7 @@
 import React from "react";
 import "./InfoOverlay.css";
 
-export const InfoOverlay = ({ setShowDrawingCanvas, setExploreRoom }) => {
+export const InfoOverlay = ({ handleStartDrawing, handleExploreRoom }) => {
   return (
     <div className="info-overlay">
       <div className="info-content">
@@ -10,14 +10,12 @@ export const InfoOverlay = ({ setShowDrawingCanvas, setExploreRoom }) => {
           Explore the beautiful bedroom of Vincent van Gogh and unleash your
           creativity in our drawing canvas.
         </p>
-        {setShowDrawingCanvas && (
-          <button onClick={() => setShowDrawingCanvas(true)}>
-            Start Drawing
-          </button>
-        )}
-        {setExploreRoom && (
-          <button onClick={() => setExploreRoom(true)}>Explore Room</button>
-        )}
+        <button onClick={handleStartDrawing}>
+          Start Drawing
+        </button>
+        <button onClick={handleExploreRoom}>
+          Explore Room
+        </button>
       </div>
     </div>
   );
