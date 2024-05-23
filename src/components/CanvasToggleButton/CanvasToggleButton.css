@@ -1,0 +1,25 @@
+.toggle-canvas-button{
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px 20px;
+    background: #007bff;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s;
+    border-radius: 4px;
+
+    &:focus{
+        border: none;
+        outline: none;
+    }
+
+    &:hover {
+        background-color: #0056b3;
+    }      
+}
